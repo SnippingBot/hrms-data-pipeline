@@ -1,0 +1,16 @@
+# Ignore Virtual Environments
+venv/
+__pycache__/
+
+# Ignore Spark and Delta Lake temp files
+spark-warehouse/
+derby.log
+metastore_db/
+output/
+rejects/
+
+# Ignore API Keys and Environment Variables
+.env
+
+# Ignore Raw Data (Optional, but best practice so you don't upload company data)
+data/

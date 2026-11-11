@@ -1,0 +1,14 @@
+target_table,target_field,description,data_type,mandatory,allowed_values,known_synonyms,example
+employee,source_employee_id,Unique employee identifier in the customer's HRMS,string,yes,,"Employee ID; Emp No; Emp Code; Staff ID; Personnel Number",A100234
+employee,full_name,Employee full name as first name then last name,string,yes,,"Name; Employee Name; Full Name",Meera Iyer
+employee,email,Work email address in lower case with no surrounding spaces,string,no,,"Work Email; Official Email; Mail ID",meera.iyer@example.com
+employee,hire_date,Date the employee joined the company,date (YYYY-MM-DD),yes,,"Date of Joining; DOJ; Start Date; Joining Date",2021-03-15
+employee,grade,Job grade on the Compport scale,string,yes,G1|G2|G3|G4|G5|G6|G7|G8,"Job Grade; Level; Band; Grade Code",G4
+employee,department,Department or function the employee belongs to,string,no,,"Dept; Function; Business Unit",Finance
+employee,location,City where the employee is based,string,no,,"City; Work Location; Base Location; Office",Pune
+employee,country,Country name in full,string,no,India|United Arab Emirates|United States|United Kingdom,"Country Code; Nation",India
+employee,gender,Gender as recorded in the HRMS,string,no,M|F,"Sex",F
+employee,manager_employee_id,source_employee_id of the employee's direct manager. Blank only for the top of the hierarchy,string,no,,"Manager ID; Reports To; Reporting Manager; Supervisor Code",A100012
+employee,employment_status,Whether the employee is currently employed,string,yes,Active|Terminated,"Status; Emp Status; Employee Status",Active
+salary,annual_base_local,"Annual fixed pay in local currency. Fixed components only. Excludes variable pay, target bonus and one-time payments",decimal,yes,,"Annual Base Salary; Fixed CTC; Base Pay; Annual Fixed",1850000.00
+salary,currency,ISO 4217 currency code of annual_base_local,string,yes,INR|AED|USD|GBP,"Ccy; Pay Currency; Currency Code",INR

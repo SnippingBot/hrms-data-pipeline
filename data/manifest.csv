@@ -1,0 +1,5 @@
+file_name,expected_data_rows,expected_salary_column_total,salary_column
+hrms_a_day1.csv,20035,15321510500.00,Annual_Base_Salary
+hrms_b_day1.csv,15015,939643208.12,monthly_ctc
+hrms_a_day2.csv,20175,15435607200.00,Annual_Base_Salary
+hrms_c_export.xlsx,6010,,"Employee Master sheet rows; salary is on the Pay Components sheet"
