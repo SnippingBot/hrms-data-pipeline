@@ -5,7 +5,7 @@ import os
 import google.generativeai as genai
 
 # Configure your API key here
-API_KEY = "AQ.Ab8RN6I-u2elY0I68TtySNLvSatrVLZIXkn-LERxtpCjUmb98g" 
+API_KEY = "Your API Key" 
 genai.configure(api_key=API_KEY)
 
 def extract_headers_from_excel(excel_path):
