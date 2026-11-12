@@ -1,0 +1,88 @@
+{
+  "source_system": "HRMS_C",
+  "source_file": "data/hrms_c_export.xlsx",
+  "mappings": [
+    {
+      "target_table": "employee",
+      "target_field": "source_employee_id",
+      "expr": "CAST(`Emp Code` AS STRING)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "full_name",
+      "expr": "TRIM(`Name (Last, First)`)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "email",
+      "expr": "LOWER(TRIM(`Official Mail ID`))"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "hire_date",
+      "expr": "COALESCE(TO_DATE(`DOJ`, 'MM-dd-yyyy'), TO_DATE(`DOJ`, 'yyyy-MM-dd'), TO_DATE(`DOJ`, 'dd-MM-yyyy'))"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "grade",
+      "expr": "TRIM(`Band`)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "department",
+      "expr": "TRIM(`Function`)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "location",
+      "expr": "TRIM(`Base Location`)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "country",
+      "expr": "NULL"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "gender",
+      "expr": "LEFT(UPPER(TRIM(`Gender`)), 1)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "manager_employee_id",
+      "expr": "NULLIF(TRIM(CAST(`Reporting Mgr Code` AS STRING)), '0')"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "employment_status",
+      "expr": "CASE WHEN UPPER(TRIM(`Emp Status`)) IN ('A', 'ACTIVE') THEN 'Active' WHEN UPPER(TRIM(`Emp Status`)) IN ('T', 'TERMINATED', 'SEPARATED') THEN 'Terminated' ELSE 'Unknown' END"
+    },
+    {
+      "target_table": "salary",
+      "target_field": "source_employee_id",
+      "expr": "CAST(`Emp Code` AS STRING)"
+    },
+    {
+      "target_table": "salary",
+      "target_field": "annual_base_local",
+      "expr": "CAST(`Field_17` AS DECIMAL(18,2))"
+    },
+    {
+      "target_table": "salary",
+      "target_field": "currency",
+      "expr": "TRIM(`Pay Currency`)"
+    }
+  ],
+  "validation_rules": [
+    "source_employee_id IS NOT NULL",
+    "full_name IS NOT NULL",
+    "hire_date IS NOT NULL",
+    "hire_date <= CURRENT_DATE()",
+    "grade IS NOT NULL",
+    "employment_status IN ('Active', 'Terminated')",
+    "annual_base_local IS NOT NULL",
+    "annual_base_local > 0",
+    "currency IS NOT NULL",
+    "currency IN ('INR', 'AED', 'USD', 'GBP')"
+  ]
+}
