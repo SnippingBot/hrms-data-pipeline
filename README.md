@@ -101,6 +101,9 @@ Orchestration: Introduce Apache Airflow or Dagster to manage pipeline dependenci
 
 Centralized Metadata: Move the JSON configuration files into a NoSQL database (like MongoDB or DynamoDB) for easier version control and querying across 300 tenants.
 
+### Assumption: HRMS_C `Field_17`
+In the HRMS_C dataset, `Field_17` lacks a descriptive header. Based on data profiling, it contains continuous numeric values ranging roughly from 40,000 to 120,000, which aligns perfectly with standard local annual compensation bands for the given roles. Since no other column in HRMS_C maps logically to salary, I have mapped `Field_17` to `annual_base_local` and treated it as the gross annual compensation.
+
 Time Spent
 
 Part A (Pipeline & Delta Lake Architecture): ~3.5 hours
