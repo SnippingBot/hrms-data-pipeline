@@ -2,20 +2,71 @@
   "source_system": "HRMS_B",
   "source_file": "data/hrms_b_day1.csv",
   "mappings": [
-    { "target_table": "employee", "target_field": "source_employee_id", "expr": "CAST(emp_no AS STRING)" },
-    { "target_table": "employee", "target_field": "full_name", "expr": "TRIM(full_name)" },
-    { "target_table": "employee", "target_field": "email", "expr": "LOWER(TRIM(email))" },
-    { "target_table": "employee", "target_field": "hire_date", "expr": "COALESCE(TO_DATE(date_of_joining, 'MM-dd-yyyy'), TO_DATE(date_of_joining, 'dd-MM-yyyy'), TO_DATE(date_of_joining, 'MM/dd/yyyy'), TO_DATE(date_of_joining, 'yyyy-MM-dd'))" },
-    { "target_table": "employee", "target_field": "grade", "expr": "UPPER(TRIM(grade_code))" },
-    { "target_table": "employee", "target_field": "department", "expr": "TRIM(dept)" },
-    { "target_table": "employee", "target_field": "location", "expr": "TRIM(city)" },
-    { "target_table": "employee", "target_field": "country", "expr": "TRIM(country_code)" },
-    { "target_table": "employee", "target_field": "gender", "expr": "LEFT(UPPER(TRIM(sex)), 1)" },
-    { "target_table": "employee", "target_field": "manager_employee_id", "expr": "NULLIF(TRIM(CAST(reports_to AS STRING)), '0')" },
-    { "target_table": "employee", "target_field": "employment_status", "expr": "CASE WHEN UPPER(TRIM(status)) IN ('A', 'ACTIVE') THEN 'Active' WHEN UPPER(TRIM(status)) IN ('T', 'TERMINATED', 'SEPARATED') THEN 'Terminated' ELSE 'Unknown' END" },
-    
-    { "target_table": "salary", "target_field": "source_employee_id", "expr": "CAST(emp_no AS STRING)" },
-    { "target_table": "salary", "target_field": "annual_base_local", "expr": "CAST(monthly_ctc AS DECIMAL(18,2)) * 12" },
+    {
+      "target_table": "employee",
+      "target_field": "source_employee_id",
+      "expr": "CAST(emp_no AS STRING)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "full_name",
+      "expr": "TRIM(full_name)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "email",
+      "expr": "LOWER(TRIM(email))"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "hire_date",
+      "expr": "COALESCE(TO_DATE(date_of_joining, 'dd/MM/yyyy'), TO_DATE(date_of_joining, 'MM/dd/yyyy'), TO_DATE(date_of_joining, 'dd-MM-yyyy'), TO_DATE(date_of_joining, 'MM-dd-yyyy'), TO_DATE(date_of_joining, 'yyyy-MM-dd'))"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "grade",
+      "expr": "UPPER(TRIM(grade_code))"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "department",
+      "expr": "TRIM(dept)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "location",
+      "expr": "TRIM(city)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "country",
+      "expr": "TRIM(country_code)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "gender",
+      "expr": "LEFT(UPPER(TRIM(sex)), 1)"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "manager_employee_id",
+      "expr": "NULLIF(TRIM(CAST(reports_to AS STRING)), '0')"
+    },
+    {
+      "target_table": "employee",
+      "target_field": "employment_status",
+      "expr": "CASE WHEN UPPER(TRIM(status)) IN ('A', 'ACTIVE') THEN 'Active' WHEN UPPER(TRIM(status)) IN ('T', 'TERMINATED', 'SEPARATED') THEN 'Terminated' ELSE 'Unknown' END"
+    },
+    {
+      "target_table": "salary",
+      "target_field": "source_employee_id",
+      "expr": "CAST(emp_no AS STRING)"
+    },
+    {
+      "target_table": "salary",
+      "target_field": "annual_base_local",
+      "expr": "CAST(monthly_ctc AS DECIMAL(18,2)) * 12"
+    },
     {
       "target_table": "salary",
       "target_field": "currency",

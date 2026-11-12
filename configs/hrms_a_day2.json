@@ -1,6 +1,6 @@
 {
-  "source_system": "HRMS_A",
-  "source_file": "data/hrms_a_day1.csv",
+  "source_system": "HRMS_A_day2",
+  "source_file": "data/hrms_a_day2.csv",
   "mappings": [
     { "target_table": "employee", "target_field": "source_employee_id", "expr": "CAST(Employee_ID AS STRING)" },
     { "target_table": "employee", "target_field": "full_name", "expr": "TRIM(CONCAT(First_Name, ' ', Last_Name))" },
